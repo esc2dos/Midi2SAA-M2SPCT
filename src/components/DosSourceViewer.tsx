@@ -10,13 +10,14 @@ import {
   M2STOOL_C_SOURCE,
   DEFAULT_M2SPRE_CFG,
 } from '../dos/dosBinaryGenerator';
+import { README_MD_CONTENT } from '../dos/readmeSource';
 
 interface DosSourceViewerProps {
   onClose: () => void;
 }
 
 export const DosSourceViewer: React.FC<DosSourceViewerProps> = ({ onClose }) => {
-  const [activeTab, setActiveTab] = useState<'source' | 'm2spct' | 'm2stool' | 'm2spre' | 'header' | 'gameport' | 'organhex' | 'build_bat'>('source');
+  const [activeTab, setActiveTab] = useState<'source' | 'm2spct' | 'm2stool' | 'm2spre' | 'readme' | 'header' | 'gameport' | 'organhex' | 'build_bat'>('source');
   const [copied, setCopied] = useState(false);
 
   // Trigger download of genuine DOS .COM executable
@@ -53,6 +54,8 @@ export const DosSourceViewer: React.FC<DosSourceViewerProps> = ({ onClose }) => 
       ? M2SPCT_C_SOURCE
       : activeTab === 'm2spre'
       ? DEFAULT_M2SPRE_CFG
+      : activeTab === 'readme'
+      ? README_MD_CONTENT
       : activeTab === 'header'
       ? SAA1099_H_SOURCE
       : activeTab === 'gameport'
@@ -124,6 +127,14 @@ export const DosSourceViewer: React.FC<DosSourceViewerProps> = ({ onClose }) => 
             >
               DOWNLOAD BUILD.BAT
             </button>
+
+            <button
+              type="button"
+              onClick={() => handleDownloadTextFile('README.md', README_MD_CONTENT)}
+              className="dos-bevel-out bg-cyan-400 hover:bg-cyan-300 text-black font-bold px-3 py-1 text-xs cursor-pointer active:dos-bevel-in"
+            >
+              DOWNLOAD README.MD
+            </button>
           </div>
 
           <button
@@ -169,6 +180,17 @@ export const DosSourceViewer: React.FC<DosSourceViewerProps> = ({ onClose }) => 
             }`}
           >
             M2SPRE.CFG (PRESET CONFIG)
+          </button>
+          <button
+            type="button"
+            onClick={() => setActiveTab('readme')}
+            className={`px-3 py-1 font-bold cursor-pointer border-t border-x whitespace-nowrap ${
+              activeTab === 'readme'
+                ? 'bg-[#0000aa] text-yellow-300 border-[#aaaaaa]'
+                : 'bg-[#000033] text-gray-400 border-transparent hover:text-white'
+            }`}
+          >
+            README.MD (GITHUB DOCS)
           </button>
           <button
             type="button"
