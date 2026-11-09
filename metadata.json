@@ -1,0 +1,9 @@
+{
+  "name": "Creative Sound Blaster Intelligent Organ (ORGAN.EXE)",
+  "description": "Faithful clone of Creative Labs' legacy ORGAN.EXE v2.02 (1988-1990) for 386DX-40 MS-DOS systems, featuring dual Philips SAA1099 sound generator chips (C/MS · Game Blaster 12 stereo voices), stripped rhythm/metronome background noise, Gameport MIDI input, and 16-bit DOS binary export.",
+  "requestFramePermissions": [
+    "midi",
+    "midi-sysex"
+  ],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

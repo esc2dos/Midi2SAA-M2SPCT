@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+@layer utilities {
+  .font-dos {
+    font-family: 'VT323', monospace;
+    font-smooth: never;
+    -webkit-font-smoothing: none;
+  }
+  .font-tech {
+    font-family: 'Share Tech Mono', monospace;
+  }
+}
+
+/* CRT Scanlines and phosphor effect */
+.crt-screen {
+  position: relative;
+  overflow: hidden;
+}
+
+.crt-scanlines::after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+  background-size: 100% 4px;
+  z-index: 20;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.crt-vignette::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.6);
+  z-index: 21;
+  pointer-events: none;
+}
+
+/* Retro DOS bevel utility */
+.dos-bevel-out {
+  border-top: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
+  border-right: 2px solid #555555;
+  border-bottom: 2px solid #555555;
+}
+
+.dos-bevel-in {
+  border-top: 2px solid #555555;
+  border-left: 2px solid #555555;
+  border-right: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+}
+
+.dos-box {
+  background-color: #0000aa;
+  border: 2px solid #aaaaaa;
+}
